@@ -11,8 +11,7 @@ include('includes/connect.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
  <!--font awesome-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--css file--> 
-<link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="style.css">
 </head>
  <body>
     <div class="container-fluid p-0">
@@ -25,7 +24,7 @@ include('includes/connect.php');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./user/registration.php">Register</a>
@@ -72,80 +71,40 @@ include('includes/connect.php');
   <div class="row">
     <div class="col-md-10">
     <!--plants-->
-    <div class="row">
-      <div class="col-md-4 md-2">
-      <div class="card">
-      <img src="./images/tulip.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Tulip</h5>
-    <h7 class="card-title">Bhavana Nursery</h5>
-    <p class="card-text"></p>
-    <a href="#" class="btn btn-danger">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
+    <div class="row px-1">
+    <?php 
+    $select_query="select * from plants";
+    $result_query=mysqli_query($con,$select_query);
+    while($row=mysqli_fetch_assoc($result_query))
+    { 
+      $plant_id=$row['plant_id'];
+      $plant_name=$row['plant_name'];
+      $plant_desc=$row['plant_desc'];
+      $category_id=$row['category_id'];
+      $image=$row['image'];
+      $price=$row['price'];
+      $stocks=$row['stocks'];
+      $nursery_name=$row['n_name'];
+      echo "<div class='col-md-4 md-2'>
+      <div class='card'>
+      <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
+    <div class='card-body'>
+    <h4 class='card-title'>$plant_name</h5>
+    <h6 class='card-title'>$nursery_name</h5>
+    <h6>Description</h6><p class='card-text'>$plant_desc</p>
+    <h6 class='card-text'>Price-$price</h6>
+    <a href='#' class='btn btn-danger'>Add to cart</a>
 </div>
 </div>
-    </div>
+    </div>";
+  }
+    ?>
  
-    <div class="col-md-4">
-    <div class="card">
-      <img src="./images/rose.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-danger">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
+ <!--row end-->
 </div>
-</div>
-    
-</div>
-<div class="col-md-4">
-<div class="card">
-      <img src="./images/white_lotus.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-danger">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
-</div>
-</div>
-</div>
-
-      <div class="col-md-4 md-2">
-      <div class="card">
-      <img src="./images/champa.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-danger">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
-</div>
-</div>
-      </div>
-      <div class="col-md-4 md-2">
-      <div class="card">
-      <img src="./images/hydrangea.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-danger">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
-</div>
-</div>
-      </div>
-      <div class="col-md-4 md-2">
-      <div class="card">
-      <img src="./images/hibiscus.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-danger">Add to cart</a>
-    <a href="#" class="btn btn-dark">View more</a>
-</div>
-</div>
+<!---column end-->
  </div>    
-</div>
-</div>
-     
+
 
     <div class="col-md-2 bg-dark p-0">
       <ul class="navbar-nav me-auto text-center">

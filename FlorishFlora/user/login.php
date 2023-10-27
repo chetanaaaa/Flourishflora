@@ -14,7 +14,7 @@ include('../includes/connect.php');
 </head>
 
 <style>
-    body{
+   body{
         overflow-x:hidden;
     }
 </style>
