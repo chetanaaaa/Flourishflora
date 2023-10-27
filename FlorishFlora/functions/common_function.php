@@ -7,7 +7,7 @@ function getplants(){
 
     //condition to check isset or not
     if(!isset($_GET['category'])) {
-    $select_query="select * from plants";
+    $select_query="select * from plants order by rand() LIMIT 0,9";
     $result_query=mysqli_query($con,$select_query);
     while($row=mysqli_fetch_assoc($result_query))
     { 
@@ -40,7 +40,7 @@ function get_all_plants(){
 
   //condition to check isset or not
   if(!isset($_GET['category'])) {
-  $select_query="select * from plants order by rand() LIMIT 0,9";
+  $select_query="select * from plants order by plant_name";
   $result_query=mysqli_query($con,$select_query);
   while($row=mysqli_fetch_assoc($result_query))
   { 
