@@ -25,13 +25,13 @@ include('functions/common_function.php');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./user/registration.php">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Plants</a>
+          <a class="nav-link" href="display_all.php">Plants</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Reminders</a>
@@ -47,9 +47,10 @@ include('functions/common_function.php');
         </li>
         
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark" type="submit">Search</button>
+      <form class="d-flex" role="search" method="get">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+        <!-- <button class="btn btn-outline-dark" type="submit">Search</button> -->
+        <input type="submit" value="search" class="btn btn-outline-light" name="search_data_plant">
       </form>
     </div>
   </div>
@@ -74,7 +75,12 @@ include('functions/common_function.php');
     <!--plants-->
     <div class="row px-1">
     <?php 
-getproducts()
+if(isset($_GET['search_data'])){
+  search_plant();
+}else{
+  getplants();
+}
+get_unique_categories();
     ?>
  
  <!--row end-->
