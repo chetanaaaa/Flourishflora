@@ -40,7 +40,10 @@ function getplants(){
     <h6 class='card-title'>$nursery_name</h5>
     <h6>Description</h6><p class='card-text'>$plant_desc</p>
     <h6 class='card-text'>Price-$price</h6>
-    <a href='#' class='btn btn-danger'>Add to cart</a>
+    <form method='get'>
+    <input type='hidden' name='plant_id' value=$plant_id> <!-- Replace with the actual plant ID -->
+    <input type='submit' value='Add to Cart'>
+</form>
 </div>
 </div>
     </div>";
@@ -73,7 +76,10 @@ function get_all_plants(){
   <h6 class='card-title'>$nursery_name</h5>
   <h6>Description</h6><p class='card-text'>$plant_desc</p>
   <h6 class='card-text'>Price-$price</h6>
-  <a href='#' class='btn btn-danger'>Add to cart</a>
+  <form method='get'>
+    <input type='hidden' name='plant_id' value=$plant_id> <!-- Replace with the actual plant ID -->
+    <input type='submit' value='Add to Cart'>
+</form>
 </div>
 </div>
   </div>";
@@ -112,7 +118,10 @@ function get_unique_categories(){
   <h6 class='card-title'>$nursery_name</h5>
   <h6>Description</h6><p class='card-text'>$plant_desc</p>
   <h6 class='card-text'>Price-$price</h6>
-  <a href='#' class='btn btn-danger'>Add to cart</a>
+  <form method='get'>
+    <input type='hidden' name='plant_id' value=$plant_id> <!-- Replace with the actual plant ID -->
+    <input type='submit' value='Add to Cart'>
+</form>
 </div>
 </div>
   </div>";
@@ -167,12 +176,24 @@ function search_plant(){
   <h6 class='card-title'>$nursery_name</h5>
   <h6>Description</h6><p class='card-text'>$plant_desc</p>
   <h6 class='card-text'>Price-$price</h6>
-  <a href='#' class='btn btn-danger'>Add to cart</a>
+  <a href='index.php?add_to_cart=$plant_id' class='btn btn-danger'>Add to cart</a>
 </div>
 </div>
   </div>";
 }
 }
+}
+
+//cartfunction
+function cart(){
+  global $con;
+if(isset($_GET['plant_id'])){
+  $get_plant_id=$_GET['plant_id'];
+  
+    $insert_query="insert into `cart_details` (plant_id,cust_id) values ($get_plant_id,6)";
+    $result_query=mysqli_query($con,$insert_query);
+    
+  }
 }
 
 ?>

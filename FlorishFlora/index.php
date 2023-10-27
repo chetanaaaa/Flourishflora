@@ -55,6 +55,11 @@ include('functions/common_function.php');
     </div>
   </div>
 </nav>
+
+<?php
+cart();
+?>
+
 <!-- second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <ul class="navbar-nav me-auto">
