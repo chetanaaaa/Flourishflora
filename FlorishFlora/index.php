@@ -86,6 +86,8 @@ if(isset($_GET['search_data'])){
   getplants();
 }
 get_unique_categories();
+$ip = getIPAddress();  
+echo 'User Real IP Address - '.$ip;  
     ?>
  
  <!--row end-->

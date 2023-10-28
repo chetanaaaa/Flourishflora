@@ -42,7 +42,7 @@ function getplants(){
     <h6 class='card-text'>Price-$price</h6>
     <form method='get'>
     <input type='hidden' name='plant_id' value=$plant_id>
-    <input type='submit' value='Add to Cart'>
+    <input type='submit' class='btn btn-danger' value='Add to Cart'>
 </form>
 </div>
 </div>
@@ -78,7 +78,7 @@ function get_all_plants(){
   <h6 class='card-text'>Price-$price</h6>
   <form method='get'>
     <input type='hidden' name='plant_id' value=$plant_id>
-    <input type='submit' value='Add to Cart'>
+    <input type='submit' class='btn btn-danger' value='Add to Cart'>
 </form>
 </div>
 </div>
@@ -120,7 +120,7 @@ function get_unique_categories(){
   <h6 class='card-text'>Price-$price</h6>
   <form method='get'>
     <input type='hidden' name='plant_id' value=$plant_id>
-    <input type='submit' value='Add to Cart'>
+    <input type='submit' class='btn btn-danger' value='Add to Cart'>
 </form>
 </div>
 </div>
@@ -176,13 +176,33 @@ function search_plant(){
   <h6 class='card-title'>$nursery_name</h5>
   <h6>Description</h6><p class='card-text'>$plant_desc</p>
   <h6 class='card-text'>Price-$price</h6>
-  <a href='index.php?add_to_cart=$plant_id' class='btn btn-danger'>Add to cart</a>
+  <form method='get'>
+    <input type='hidden' name='plant_id' value=$plant_id>
+    <input type='submit' class='btn btn-danger' value='Add to Cart'>
+</form>
 </div>
 </div>
   </div>";
 }
 }
 }
+
+function getIPAddress() {  
+  //whether ip is from the share internet  
+   if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+              $ip = $_SERVER['HTTP_CLIENT_IP'];  
+      }  
+  //whether ip is from the proxy  
+  elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+              $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+   }  
+//whether ip is from the remote address  
+  else{  
+           $ip = $_SERVER['REMOTE_ADDR'];  
+   }  
+   return $ip;  
+}  
+
 
 //cartfunction
 function cart(){
