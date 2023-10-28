@@ -81,6 +81,7 @@ if(isset($_GET['search_data'])){
   get_all_plants();
 }
 get_unique_categories();
+cart();
     ?>
  
  <!--row end-->
