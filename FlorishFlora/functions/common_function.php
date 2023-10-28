@@ -204,7 +204,7 @@ if(isset($_GET['plant_id'])){
 
   }
   else{
-    $insert_query="insert into cart_details (plant_id,ip_address) values($get_plant_id,'$get_ip_address')";
+    $insert_query="insert into cart_details (plant_id,ip_address,quantity) values($get_plant_id,'$get_ip_address',1)";
     $result_query=mysqli_query($con,$insert_query);
     echo "<script>alert('item successfully inserted')</script>";
     echo"<script>window.open('index.php','_self')</script>";
@@ -232,7 +232,6 @@ function total_cart_price(){
   global $con;
   $get_ip_address=$_SERVER['REMOTE_ADDR'];
   $total=0;
-
   $cart_query="select * from cart_details where ip_address='$get_ip_address'";
   $result=mysqli_query($con,$cart_query);
   while($row=mysqli_fetch_array($result)){
