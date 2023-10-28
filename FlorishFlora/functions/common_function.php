@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>FlorishFlora</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -41,7 +41,7 @@ function getplants(){
     <h6>Description</h6><p class='card-text'>$plant_desc</p>
     <h6 class='card-text'>Price-$price</h6>
     <form method='get'>
-    <input type='hidden' name='plant_id' value=$plant_id> <!-- Replace with the actual plant ID -->
+    <input type='hidden' name='plant_id' value=$plant_id>
     <input type='submit' value='Add to Cart'>
 </form>
 </div>
@@ -77,7 +77,7 @@ function get_all_plants(){
   <h6>Description</h6><p class='card-text'>$plant_desc</p>
   <h6 class='card-text'>Price-$price</h6>
   <form method='get'>
-    <input type='hidden' name='plant_id' value=$plant_id> <!-- Replace with the actual plant ID -->
+    <input type='hidden' name='plant_id' value=$plant_id>
     <input type='submit' value='Add to Cart'>
 </form>
 </div>
@@ -119,7 +119,7 @@ function get_unique_categories(){
   <h6>Description</h6><p class='card-text'>$plant_desc</p>
   <h6 class='card-text'>Price-$price</h6>
   <form method='get'>
-    <input type='hidden' name='plant_id' value=$plant_id> <!-- Replace with the actual plant ID -->
+    <input type='hidden' name='plant_id' value=$plant_id>
     <input type='submit' value='Add to Cart'>
 </form>
 </div>
@@ -189,11 +189,46 @@ function cart(){
   global $con;
 if(isset($_GET['plant_id'])){
   $get_plant_id=$_GET['plant_id'];
-  
-    $insert_query="insert into `cart_details` (plant_id,cust_id) values ($get_plant_id,6)";
-    $result_query=mysqli_query($con,$insert_query);
-    
+  $user_id=7;
+    $insert_query="insert into `cart_details` (plant_id,cust_id) values ($get_plant_id,$user_id)";
+    $result_query=mysqli_query($con,$insert_query);   
   }
 }
+
+
+//function for get cart item number
+function cart_item(){
+  $num_rows=0;
+  global $con;
+  // if(isset($_GET['plant_id'])){
+    
+    $cust_id=7;
+    $select_query="select * from cart_details where cust_id=$cust_id";
+    $result_query=mysqli_query($con,$select_query);
+    $num_rows = mysqli_num_rows($result_query);
+    echo $num_rows;
+}
+
+//total price function
+function total_cart_price(){
+  global $con;
+  $cust_id=7;
+  $total=0;
+  $cart_query="select * from cart_details where cust_id=$cust_id";
+  $result=mysqli_query($con,$cart_query);
+  while($row=mysqli_fetch_array($result)){
+    $plant_id=$row['plant_id'];
+    $select_plants="select * from plants where plant_id=$plant_id";
+    $result_plant=mysqli_query($con,$select_plants);
+    while($row_plant_price=mysqli_fetch_array($result_plant)){
+      $plant_price=array($row_plant_price['price']);
+      $plant_values=array_sum($plant_price);
+      $total+=$plant_values;
+    }
+  }
+  echo "$total";
+
+}
+
 
 ?>
