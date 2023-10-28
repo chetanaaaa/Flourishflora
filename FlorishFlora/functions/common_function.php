@@ -14,6 +14,7 @@
 <?php
 include("./includes/connect.php");
 
+
 //getting plants
 function getplants(){
     global $con;
@@ -187,54 +188,52 @@ function search_plant(){
 }
 }
 
-function getIPAddress() {  
-  //whether ip is from the share internet  
-   if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
-              $ip = $_SERVER['HTTP_CLIENT_IP'];  
-      }  
-  //whether ip is from the proxy  
-  elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
-              $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
-   }  
-//whether ip is from the remote address  
-  else{  
-           $ip = $_SERVER['REMOTE_ADDR'];  
-   }  
-   return $ip;  
-}  
-
 
 //cartfunction
 function cart(){
   global $con;
 if(isset($_GET['plant_id'])){
   $get_plant_id=$_GET['plant_id'];
-  $user_id=7;
-    $insert_query="insert into `cart_details` (plant_id,cust_id) values ($get_plant_id,$user_id)";
-    $result_query=mysqli_query($con,$insert_query);   
+  $get_ip_address=$_SERVER['REMOTE_ADDR'];
+    $select_query="select * from cart_details where ip_address='$get_ip_address' and plant_id=$get_plant_id";
+    $result_query=mysqli_query($con,$select_query);
+    $num_of_rows=mysqli_num_rows($result_query);
+    if($num_of_rows>0){
+      echo "<script>alert('this item is already in cart')</script>";
+      echo"<script>window.open('index.php','_self')</script>";
+
+  }
+  else{
+    $insert_query="insert into cart_details (plant_id,ip_address) values($get_plant_id,'$get_ip_address')";
+    $result_query=mysqli_query($con,$insert_query);
+    echo "<script>alert('item successfully inserted')</script>";
+    echo"<script>window.open('index.php','_self')</script>";
   }
 }
-
+}
 
 //function for get cart item number
 function cart_item(){
   $num_rows=0;
   global $con;
   // if(isset($_GET['plant_id'])){
-    
-    $cust_id=7;
-    $select_query="select * from cart_details where cust_id=$cust_id";
+    $get_ip_address=$_SERVER['REMOTE_ADDR'];
+    $select_query="select * from cart_details where ip_address='$get_ip_address'";
     $result_query=mysqli_query($con,$select_query);
     $num_rows = mysqli_num_rows($result_query);
     echo $num_rows;
-}
+   
+  }
+
+
 
 //total price function
 function total_cart_price(){
   global $con;
-  $cust_id=7;
+  $get_ip_address=$_SERVER['REMOTE_ADDR'];
   $total=0;
-  $cart_query="select * from cart_details where cust_id=$cust_id";
+
+  $cart_query="select * from cart_details where ip_address='$get_ip_address'";
   $result=mysqli_query($con,$cart_query);
   while($row=mysqli_fetch_array($result)){
     $plant_id=$row['plant_id'];
