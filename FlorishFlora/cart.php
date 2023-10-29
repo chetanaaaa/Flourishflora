@@ -2,6 +2,18 @@
 include('includes/connect.php');
 include('functions/common_function.php');
 ?>
+<?php
+$get_ip_address=$_SERVER['REMOTE_ADDR'];
+if(isset($_POST['update'])){
+  $quantities=intval($_POST['qty']);
+  $id=$_POST['update_quantity'];
+  $updateq="update cart_details set quantity=$quantities where plant_id=$id and ip_address='$get_ip_address'";
+  $result=mysqli_query($con,$updateq);
+  if($result){
+    header('location:cart.php');
+  }
+}
+?>
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -89,15 +101,18 @@ cart();
                     <th>Price</th>
                     <th>Remove</th>
                     <th>Operations</th>
+                    <th>Total price</th>
                 </tr>
             </thead>
 <?php
 global $con;
 $get_ip_address=$_SERVER['REMOTE_ADDR'];
 $total=0;
+$grand_total=0;
 $cart_query="select * from cart_details where ip_address='$get_ip_address'";
 $resultq=mysqli_query($con,$cart_query);
 while($row=mysqli_fetch_array($resultq)){
+    $qty=$row['quantity'];
   $plant_id=$row['plant_id'];
   $select_plants="select * from plants where plant_id=$plant_id";
   $result_plant=mysqli_query($con,$select_plants);
@@ -114,36 +129,48 @@ while($row=mysqli_fetch_array($resultq)){
                     <td><?php echo $name?></td>
                     <td><img class="cart_img" src="./images/<?php echo $image?>" alt=""></td>
 <form action="" method="post">
-                    <td><input type="number" name="qty" min="1" class="form-input w-10"></td>
-                    <?php
-                     $get_ip_address=$_SERVER['REMOTE_ADDR'];
-                    if(isset($_POST['update'])){
-                        $quantities=intval($_POST['qty']);
-                        $id=$_POST['update_quantity'];
-                        $update="update cart_details set quantity=$quantities where plant_id=$id and ip_address='$get_ip_address'";
-                        $result=mysqli_query($con,$update);
-                        $total=$total+$quantities*$price;
-                    }
-                    ?>
-                    <td><?php echo $price?></td>
-                    <td><input type="checkbox"></td>
+<td> <input type='number' name='qty' min='1' class='text-center' value=<?php echo $qty?>></td>
+                    
+                    <td><?php echo number_format($price)?></td>
+                    <td><input type="checkbox" name="removeitem[]" value="<?php echo $plant_id ?>"></td>
+                    
                     <td>
                         <input type="hidden" value="<?php echo $plant_id?>" name=update_quantity>
                         <input type="submit" value="Update" class="bg-success px-3 py-0.5 border-0 mx-4" name="update">
-                        <button class="bg-danger px-3 py-0.5 border-0 mx-1">Remove</button>
+                        <input type="submit" value="Remove" class="bg-danger px-3 py-0.5 border-0 mx-4" name="remove">
                     </td>
+                    <td><?php echo $subtotal=number_format($rowp['price']*$row['quantity'])?></td>
 </form>
                 </tr>
-<?php  }}?>
+<?php  
+$grand_total+=$subtotal;
+}}?>
             </tbody>
         </table>
 <div class="d-flex mb-5">
-<h4 class="px-3">Subtotal: <strong class="text-success"><?php echo $total ?>/-</strong></h4>
+<h4 class="px-3">Grand Total: <strong class="text-success"><?php echo number_format($grand_total) ?>/-</strong></h4>
 <a href="index.php"><button class="bg-success px-3 py-2 border-0 mx-3">Continue Shopping</button></a>
 <a href="#"><button class="bg-secondary px-3 py-2 border-0 text-light">Checkout</button></a>
 </div>
 </div>
 </div>
+
+<?php
+function remove_cart_item(){
+    global $con;
+    if(isset($_POST['remove'])){
+        foreach($_POST['removeitem'] as $remove_id){
+            echo $remove_id;
+            $delete_query="delete from cart_details where plant_id=$remove_id";
+            $run_del=mysqli_query($con,$delete_query);
+            if($run_del){
+                echo "<script>window.open('cart.php','_self')</script>";
+            }
+        }
+    }
+}
+echo $remove_item=remove_cart_item();
+?>
 
 
 
