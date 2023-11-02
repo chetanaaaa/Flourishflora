@@ -1,6 +1,7 @@
 <?php 
 include('../includes/connect.php');
-include('../functions/common_function.php')
+include('../functions/common_function.php');
+@session_start();
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +58,8 @@ if(isset($_POST['login'])){
     $result=mysqli_query($con,$select_query);
     $row_count=mysqli_num_rows($result);
     $row_data=mysqli_fetch_assoc($result);
+    $cust_id=$row_data['cust_id'];
+    $fname=$row_data['fname'];
     $user_ip=$_SERVER['REMOTE_ADDR'];
 
 ///////////cart item
@@ -65,14 +68,18 @@ $select_cart=mysqli_query($con,$select_query_cart);
 $row_count_cart=mysqli_num_rows($select_cart);
     if($row_count>0){
         $_SESSION['email']=$email;
+        // $_SESSION['fname']=$fname;
+        $_SESSION['cust_id']=$cust_id;
         if(password_verify($password,$row_data['password'])){
             if($row_count==1 and $row_count_cart==0){
                 $_SESSION['email']=$email;
+                $_SESSION['cust_id']=$cust_id;
                 echo "<script>alert('Logged in successfully!🤩')</script>";
                 echo "<script>window.open('profile.php','_self')</script>";
             }
             else{
                 $_SESSION['email']=$email;
+                $_SESSION['cust_id']=$cust_id;
                 echo "<script>alert('Logged in successfully!🥳')</script>";
                 echo "<script>alert('You have items in your cart🤗')</script>";
                 echo "<script>window.open('payment.php','_self')</script>";

@@ -34,7 +34,7 @@ function getplants(){
       $nursery_name=$row['n_name'];
       echo "<div class='col-md-4 md-2'>
       <div class='card' style='width: 100%; height: 100%;'>
-      <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
+      <img src='../nursery/img/$image'class='card-img-top' alt='$plant_name'>
     <div class='card-body'>
     <h4 class='card-title'>$plant_name</h5>
     <h6 class='card-title'>$nursery_name</h5>

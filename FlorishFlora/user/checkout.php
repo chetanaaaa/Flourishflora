@@ -1,5 +1,6 @@
 <?php 
 include('../includes/connect.php');
+session_start();
 ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -54,9 +55,18 @@ include('../includes/connect.php');
     <li class="nav-item">
         <a class="nav-link" href="#">Welcome Guest</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
-    </li>
+    <?php
+    if(!isset($_SESSION['email'])){
+      echo "<li class='nav-item'>
+      <a class='nav-link' href='login.php'>Login</a>
+  </li>";
+    }
+    else{
+      echo "<li class='nav-item'>
+      <a class='nav-link' href='logout.php'>Logout</a>
+  </li>";
+    }
+    ?>
 </ul>
 </nav>
 <div class="bg-light">
