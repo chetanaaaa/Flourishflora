@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +13,8 @@
 </body>
 </html>
 <?php
-include("./includes/connect.php");
-
-
 //getting plants
-function getplants(){
+function getplants(){               
     global $con;
 
     //condition to check isset or not
@@ -70,7 +68,7 @@ function get_all_plants(){
     $stocks=$row['stocks'];
     $nursery_name=$row['n_name'];
     echo "<div class='col-md-4 md-2'>
-    <div class='card'>
+    <div class='card' style='width: 100%; height: 100%;'>
     <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
   <div class='card-body'>
   <h4 class='card-title'>$plant_name</h5>
@@ -112,7 +110,7 @@ function get_unique_categories(){
     $stocks=$row['stocks'];
     $nursery_name=$row['n_name'];
     echo "<div class='col-md-4 md-2'>
-    <div class='card'>
+    <div class='card' style='width: 100%; height: 100%;'>
     <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
   <div class='card-body'>
   <h4 class='card-title'>$plant_name</h5>
@@ -170,7 +168,7 @@ function search_plant(){
     $stocks=$row['stocks'];
     $nursery_name=$row['n_name'];
     echo "<div class='col-md-4 md-2'>
-    <div class='card'>
+    <div class='card' style='width: 100%; height: 100%;'>
     <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
   <div class='card-body'>
   <h4 class='card-title'>$plant_name</h5>

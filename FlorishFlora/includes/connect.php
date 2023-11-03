@@ -1,8 +1,8 @@
 <?php
-$con=mysqli_connect('localhost','root',' ','plantcare',"3310");
+$con=mysqli_connect('localhost','root','','plantcare','3310');
 if(!$con)
 {
-    die(mysqli_error($con));
+     die(mysqli_connect($con));
+     
 }
-
 ?>
