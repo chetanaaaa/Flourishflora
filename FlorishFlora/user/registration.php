@@ -72,7 +72,7 @@ if(isset($_POST['register'])){
     $hash_password=password_hash($password,PASSWORD_DEFAULT);
     $address=$_POST['address'];
     $contact=$_POST['contact'];
-    // $user_ip=getIPAddress();
+    $user_ip=$_SERVER['REMOTE_ADDR'];
 
     // select query
 
@@ -80,31 +80,30 @@ if(isset($_POST['register'])){
     $result=mysqli_query($con,$select_query);
     $rows_count=mysqli_num_rows($result);
     if($rows_count>0){
-        echo "<script>alert('email already exixts')</script>";
+        echo "<script>alert('email already exixts😕')</script>";
     }
     else{
     // insert query
     $insert_query="insert into `user_table` 
-    (fname,lname,email,password,address,contact) values 
-    ('$fname','$lname','$email','$hash_password','$address','$contact')";
-    
-    // user_ip
+    (fname,lname,email,password,user_ip,address,contact) values 
+    ('$fname','$lname','$email','$hash_password','$user_ip','$address','$contact')";
+   
 
     $sql_execute=mysqli_query($con,$insert_query);
     }
-    /*
-    $select_cart_items="select * from `cart_details` where
+    
+    $select_cart_items="select * from cart_details where
     ip_address='$user_ip'";
     $result_cart=mysqli_query($con,$select_cart_items);
     $rows_count=mysqli_num_rows($result_cart);
     if($rows_count>0){
         $_SESSION['email']=$email;
-        echo "<scriptalert('You have items in your cart')></script>";
+        echo "<scriptalert('You have items in your cart🤗')></script>";
         echo "<script>window.open('checkout.php','_self'</script>";
     }
     else{
-        echo "<script>window.open('../index.php','_self')</script>";
+        echo "<script>window.open('./index.php','_self')</script>";
     }
-    */
+    
 }
 ?>

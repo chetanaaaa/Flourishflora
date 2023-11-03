@@ -33,7 +33,7 @@ function getplants(){
       $nursery_name=$row['n_name'];
       echo "<div class='col-md-4 md-2'>
       <div class='card' style='width: 100%; height: 100%;'>
-      <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
+      <img src='../nursery/img/$image'class='card-img-top' alt='$plant_name'>
     <div class='card-body'>
     <h4 class='card-title'>$plant_name</h5>
     <h6 class='card-title'>$nursery_name</h5>
@@ -197,14 +197,14 @@ if(isset($_GET['plant_id'])){
     $result_query=mysqli_query($con,$select_query);
     $num_of_rows=mysqli_num_rows($result_query);
     if($num_of_rows>0){
-      echo "<script>alert('this item is already in cart')</script>";
+      echo "<script>alert('This item is already in cart')</script>";
       echo"<script>window.open('index.php','_self')</script>";
 
   }
   else{
     $insert_query="insert into cart_details (plant_id,ip_address,quantity) values($get_plant_id,'$get_ip_address',1)";
     $result_query=mysqli_query($con,$insert_query);
-    echo "<script>alert('item successfully inserted')</script>";
+    echo "<script>alert('Item successfully inserted🤩')</script>";
     echo"<script>window.open('index.php','_self')</script>";
   }
 }
@@ -236,8 +236,9 @@ function total_cart_price(){
     $plant_id=$row['plant_id'];
     $select_plants="select * from plants where plant_id=$plant_id";
     $result_plant=mysqli_query($con,$select_plants);
-    while($row_plant_price=mysqli_fetch_array($result_plant)){
-      $plant_price=array($row_plant_price['price']);
+    while($row_plant=mysqli_fetch_array($result_plant)){
+      $qty=$row['quantity'];
+      $plant_price=array($row_plant['price']*$qty);
       $plant_values=array_sum($plant_price);
       $total+=$plant_values;
     }

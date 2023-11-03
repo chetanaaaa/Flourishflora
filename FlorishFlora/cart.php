@@ -93,17 +93,7 @@ cart();
 <div class="container">
     <div class="row">
         <table class="table table-bordered text-center">
-            <thead>
-                <tr>
-                    <th>Plant Name</th>
-                    <th>Image</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Remove</th>
-                    <th>Operations</th>
-                    <th>Total price</th>
-                </tr>
-            </thead>
+
 <?php
 global $con;
 $get_ip_address=$_SERVER['REMOTE_ADDR'];
@@ -111,6 +101,19 @@ $total=0;
 $grand_total=0;
 $cart_query="select * from cart_details where ip_address='$get_ip_address'";
 $resultq=mysqli_query($con,$cart_query);
+$count=mysqli_num_rows($resultq);
+if($count>0){
+  echo "<thead>
+  <tr>
+      <th>Plant Name</th>
+      <th>Image</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Remove</th>
+      <th>Operations</th>
+      <th>Total price</th>
+  </tr>
+</thead>";
 while($row=mysqli_fetch_array($resultq)){
     $qty=$row['quantity'];
   $plant_id=$row['plant_id'];
@@ -143,14 +146,32 @@ while($row=mysqli_fetch_array($resultq)){
 </form>
                 </tr>
 <?php  
-$grand_total+=$subtotal;
-}}?>
+$grand_total+=$rowp['price']*$row['quantity'];
+$grand_total_format=number_format($grand_total);
+}}}
+else{
+  echo "<h2 class='text-center text-danger'>Your cart is empty:\</h2>";
+}
+?>
             </tbody>
         </table>
 <div class="d-flex mb-5">
-<h4 class="px-3">Grand Total: <strong class="text-success"><?php echo number_format($grand_total) ?>/-</strong></h4>
-<a href="index.php"><button class="bg-success px-3 py-2 border-0 mx-3">Continue Shopping</button></a>
-<a href="#"><button class="bg-secondary px-3 py-2 border-0 text-light">Checkout</button></a>
+<?php
+$get_ip_address=$_SERVER['REMOTE_ADDR'];
+$cart_query="select * from cart_details where ip_address='$get_ip_address'";
+$resultq=mysqli_query($con,$cart_query);
+$count=mysqli_num_rows($resultq);
+if($count>0){
+echo "<h4 class='px-3'>Grand Total: <strong class='text-success'>$grand_total_format/-</strong></h4>
+<input type='submit' name='continue' value='Continue Shopping' class='bg-success px-3 py-3 border-0 mx-4'>
+<button class='bg-secondary px-3 py-2 border-0'><a href='./user/checkout.php' class='text-decoration-none text-light'>Checkout</a></button>";
+}else{
+  echo "<input type='submit' name='continue' value='Continue Shopping' class='bg-success px-3 py-3 border-0 mx-4'>";
+}
+if(isset($_POST['continue'])){
+  echo "<script>window.open('index.php','_self')</script>";
+}
+?>
 </div>
 </div>
 </div>
@@ -159,6 +180,7 @@ $grand_total+=$subtotal;
 function remove_cart_item(){
     global $con;
     if(isset($_POST['remove'])){
+      if(isset($_POST['removeitem'])){
         foreach($_POST['removeitem'] as $remove_id){
             echo $remove_id;
             $delete_query="delete from cart_details where plant_id=$remove_id";
@@ -167,7 +189,10 @@ function remove_cart_item(){
                 echo "<script>window.open('cart.php','_self')</script>";
             }
         }
+    }else{
+      echo "<script>alert('To remove an item, use the checkbox.')</script>";
     }
+}
 }
 echo $remove_item=remove_cart_item();
 ?>
