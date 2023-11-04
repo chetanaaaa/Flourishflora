@@ -102,7 +102,7 @@ $fname=$user_row['fname'];
 </nav>
   <div class="bg-light">
     <h3 class="text-center">FLOURISH FLORA</h3>
-    <h5 class="text-center text-success">User Profile</h5>
+    <p class="text-center">Your Nursery's green companian</p>
  
     <!-- fourth child -->
     <div class="row">
@@ -128,9 +128,12 @@ $fname=$user_row['fname'];
                 </li>
             </ul>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 text-center">
             <?php
             get_user_order_details();
+            if(isset($_GET['edit_account'])){
+                include('edit_acc.php');
+            }
             ?>
         </div>
     </div>
