@@ -1,6 +1,6 @@
 <?php 
 include('../includes/connect.php');
-session_start();
+@session_start();
 ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -18,7 +18,7 @@ session_start();
     <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg bg-success">
   <div class="container-fluid">
-   <img src="./images/plant_logo.png" class="logo"> 
+   <img src="../images/plant_logo.png" class="logo"> 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -48,14 +48,30 @@ session_start();
     </div>
   </div>
 </nav>
+<?php
+if(isset($_SESSION['email'])){
+  $email=$_SESSION['email'];
+  $selectq="select * from user_table where email='$email'";
+  $user_res=mysqli_query($con,$selectq);
+  $user_row=mysqli_fetch_array($user_res);
+  $fname=$user_row['fname'];
+}
+?>
 
 <!-- second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <ul class="navbar-nav me-auto">
-    <li class="nav-item">
-        <a class="nav-link" href="#">Welcome Guest</a>
-    </li>
     <?php
+if(!isset($_SESSION['email'])){
+  echo "<li class='nav-item'>
+  <a class='nav-link' href='#'>Welcome Guest</a>
+  </li>";
+}
+else{
+  echo "<li class='nav-item'>
+  <a class='nav-link' href='#'>Welcome $fname</a>
+  </li>";}
+
     if(!isset($_SESSION['email'])){
       echo "<li class='nav-item'>
       <a class='nav-link' href='login.php'>Login</a>

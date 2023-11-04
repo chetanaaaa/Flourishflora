@@ -1,7 +1,14 @@
 <?php 
 include('includes/connect.php');
 include('functions/common_function.php');
-session_start();
+@session_start();
+if(isset($_SESSION['email'])){
+  $email=$_SESSION['email'];
+  $selectq="select * from user_table where email='$email'";
+  $user_res=mysqli_query($con,$selectq);
+  $user_row=mysqli_fetch_array($user_res);
+  $fname=$user_row['fname'];
+}
 ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -59,19 +66,25 @@ session_start();
 <!-- second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <ul class="navbar-nav me-auto">
-  <li class="nav-item">
-          <a class="nav-link" href="#">Welcome Guest</a>
-        </li>
-        <?php
+<?php
+        if(!isset($_SESSION['email'])){
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='#'>Welcome Guest</a>
+          </li>";
+        }
+        else{
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='#'>Welcome $fname</a>
+          </li>";}
     if(!isset($_SESSION['email'])){
       echo "<li class='nav-item'>
       <a class='nav-link' href='./user/login.php'>Login</a>
-  </li>";
+      </li>";
     }
     else{
       echo "<li class='nav-item'>
       <a class='nav-link' href='./user/logout.php'>Logout</a>
-  </li>";
+      </li>";
     }
     ?>
 </ul>

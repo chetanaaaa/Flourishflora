@@ -59,6 +59,13 @@ session_start();
 
 <?php
 cart();
+if(isset($_SESSION['email'])){
+$email=$_SESSION['email'];
+$selectq="select * from user_table where email='$email'";
+$user_res=mysqli_query($con,$selectq);
+$user_row=mysqli_fetch_array($user_res);
+$fname=$user_row['fname'];
+}
 ?>
 
 <!-- second child-->
@@ -72,7 +79,7 @@ cart();
         }
         else{
           echo "<li class='nav-item'>
-          <a class='nav-link' href='#'>Welcome ".$_SESSION['email']."</a>
+          <a class='nav-link' href='#'>Welcome $fname</a>
           </li>";}
     if(!isset($_SESSION['email'])){
       echo "<li class='nav-item'>

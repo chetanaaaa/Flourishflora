@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +12,10 @@
 </body>
 </html>
 <?php
+// include("./includes/connect.php");
+
 //getting plants
-function getplants(){               
+function getplants(){
     global $con;
 
     //condition to check isset or not
@@ -33,7 +34,7 @@ function getplants(){
       $nursery_name=$row['n_name'];
       echo "<div class='col-md-4 md-2'>
       <div class='card' style='width: 100%; height: 100%;'>
-      <img src='../nursery/img/$image'class='card-img-top' alt='$plant_name'>
+      <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
     <div class='card-body'>
     <h4 class='card-title'>$plant_name</h5>
     <h6 class='card-title'>$nursery_name</h5>
@@ -68,7 +69,7 @@ function get_all_plants(){
     $stocks=$row['stocks'];
     $nursery_name=$row['n_name'];
     echo "<div class='col-md-4 md-2'>
-    <div class='card' style='width: 100%; height: 100%;'>
+    <div class='card'>
     <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
   <div class='card-body'>
   <h4 class='card-title'>$plant_name</h5>
@@ -110,7 +111,7 @@ function get_unique_categories(){
     $stocks=$row['stocks'];
     $nursery_name=$row['n_name'];
     echo "<div class='col-md-4 md-2'>
-    <div class='card' style='width: 100%; height: 100%;'>
+    <div class='card'>
     <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
   <div class='card-body'>
   <h4 class='card-title'>$plant_name</h5>
@@ -168,7 +169,7 @@ function search_plant(){
     $stocks=$row['stocks'];
     $nursery_name=$row['n_name'];
     echo "<div class='col-md-4 md-2'>
-    <div class='card' style='width: 100%; height: 100%;'>
+    <div class='card'>
     <img src='./nursery/img/$image'class='card-img-top' alt='$plant_name'>
   <div class='card-body'>
   <h4 class='card-title'>$plant_name</h5>
@@ -247,5 +248,30 @@ function total_cart_price(){
 
 }
 
-
+//get user order details
+function get_user_order_details(){
+  global $con;
+  $email=$_SESSION['email'];
+  $query="select * from user_table where email='$email'";
+  $run=mysqli_query($con,$query);
+  while($row=mysqli_fetch_array($run)){
+    $cust_id=$row['cust_id'];
+    if(!isset($_GET['edit_account'])){
+      if(!isset($_GET['my_orders'])){
+        if(!isset($_GET['delete_account'])){
+          $get_orders="select * from orders where cust_id=$cust_id and status='pending'";
+          $run_orders=mysqli_query($con,$get_orders);
+          $row_count=mysqli_num_rows($run_orders);
+          if($row_count>0){
+            echo "<h3 class='text-center text-success mt-5 mb-2'>You have <span class='text-danger'>$row_count</span> pending orders</h3>
+            <p class='text-center'><a href='profile.php?my_orders' class='text-dark'>Order Details</a></p>";
+          }else{
+            echo "<h3 class='text-center text-success mt-5 mb-2'>You have zero pending orders</h3>
+            <p class='text-center'><a href='../index.php' class='text-dark'>Explore plants</a></p>";
+          }
+        }
+      }
+    }
+  }
+}
 ?>
