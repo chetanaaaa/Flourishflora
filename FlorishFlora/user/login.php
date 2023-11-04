@@ -79,7 +79,7 @@ $row_count_cart=mysqli_num_rows($select_cart);
             }
             else{
                 $_SESSION['email']=$email;
-                $_SESSION['cust_id']=$cust_id;
+                $_SESSION['cust_id']=$cust_id; 
                 echo "<script>alert('Logged in successfully!🥳')</script>";
                 echo "<script>alert('You have items in your cart🤗')</script>";
                 echo "<script>window.open('payment.php','_self')</script>";

@@ -49,7 +49,7 @@ include('../functions/common_function.php');
     <button class="my-3"><a href="index.php?view_plants" class="nav-link text-light bg-success ">View products</a></button>
     <button><a href="" class="nav-link text-light bg-success">Insert Remainders</a></button>
     <button><a href="index.php?insert_category" class="nav-link text-light bg-success">Insert Categories</a></button>
-    <button><a href="" class="nav-link text-light bg-success">View categories</a></button>
+    <button><a href="index.php?view_categories" class="nav-link text-light bg-success">View categories</a></button>
     <button><a href="" class="nav-link text-light bg-success">Nurseries</a></button>
     <button><a href="" class="nav-link text-light bg-success">Users</a></button>
     <button><a href="" class="nav-link text-light bg-success">Orders</a></button>
@@ -74,6 +74,23 @@ include('../functions/common_function.php');
     {
         include('view_plants.php');
     }
+    if(isset($_GET['edit_plants']))
+    {
+        include('edit_plants.php');
+    }
+    if(isset($_GET['remove_plants']))
+    {
+        include('remove_plants.php');
+    }
+    if(isset($_GET['view_categories']))
+    {
+        include('view_categories.php');
+    }
+    if(isset($_GET['edit_categories']))
+    {
+        include('edit_categories.php');
+    }
+    
     ?>
 </div>
 </div>
