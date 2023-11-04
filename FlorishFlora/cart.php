@@ -1,6 +1,7 @@
 <?php 
 include('includes/connect.php');
 include('functions/common_function.php');
+@session_start();
 ?>
 <?php
 $get_ip_address=$_SERVER['REMOTE_ADDR'];
@@ -68,17 +69,39 @@ if(isset($_POST['update'])){
 
 <?php
 cart();
+if(isset($_SESSION['email'])){
+  $email=$_SESSION['email'];
+  $selectq="select * from user_table where email='$email'";
+  $user_res=mysqli_query($con,$selectq);
+  $user_row=mysqli_fetch_array($user_res);
+  $fname=$user_row['fname'];
+  }
 ?>
 
 <!-- second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <ul class="navbar-nav me-auto">
-  <li class="nav-item">
-          <a class="nav-link" href="#">Welcome Guest</a>
-        </li>
- <li class="nav-item">
-          <a class="nav-link" href="./user/login.php">Login</a>
-        </li>
+<?php
+        if(!isset($_SESSION['email'])){
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='#'>Welcome Guest</a>
+          </li>";
+        }
+        else{
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='#'>Welcome $fname</a>
+          </li>";}
+    if(!isset($_SESSION['email'])){
+      echo "<li class='nav-item'>
+      <a class='nav-link' href='./user/login.php'>Login</a>
+      </li>";
+    }
+    else{
+      echo "<li class='nav-item'>
+      <a class='nav-link' href='./user/logout.php'>Logout</a>
+      </li>";
+    }
+    ?>
 </ul>
 </nav>
 <!-- Third child -->
