@@ -2,6 +2,13 @@
 include('includes/connect.php');
 include('functions/common_function.php');
 session_start();
+if(isset($_SESSION['email'])){
+  $email=$_SESSION['email'];
+  $selectq="select * from user_table where email='$email'";
+  $user_res=mysqli_query($con,$selectq);
+  $user_row=mysqli_fetch_array($user_res);
+  $fname=$user_row['fname'];
+  }
 ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -68,13 +75,6 @@ session_start();
 
 <?php
 cart();
-if(isset($_SESSION['email'])){
-$email=$_SESSION['email'];
-$selectq="select * from user_table where email='$email'";
-$user_res=mysqli_query($con,$selectq);
-$user_row=mysqli_fetch_array($user_res);
-$fname=$user_row['fname'];
-}
 ?>
 
 <!-- second child-->
