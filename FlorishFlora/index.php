@@ -28,9 +28,18 @@ session_start();
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./user/registration.php">Register</a>
-        </li>
+        <?php
+        if(isset($_SESSION['email'])){
+          echo "<li class='nav-item'>
+          <a class='nav-link active' aria-current='page' href='./user/profile.php'>My Account</a>
+        </li>";
+        }else{
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='./user/registration.php'>Register</a>
+        </li>";
+        }
+        ?>
+        
         <li class="nav-item">
           <a class="nav-link" href="display_all.php">Plants</a>
         </li>

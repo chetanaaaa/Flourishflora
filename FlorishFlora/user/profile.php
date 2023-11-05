@@ -134,6 +134,13 @@ $fname=$user_row['fname'];
             if(isset($_GET['edit_account'])){
                 include('edit_acc.php');
             }
+            if(isset($_GET['my_orders'])){
+              include('user_orders.php');
+            }
+            if(isset($_GET['delete_account'])){
+              include('delete_acc.php');
+            }
+            
             ?>
         </div>
     </div>
