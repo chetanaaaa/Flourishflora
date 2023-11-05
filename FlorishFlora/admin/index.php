@@ -86,9 +86,13 @@ include('../functions/common_function.php');
     {
         include('view_categories.php');
     }
-    if(isset($_GET['edit_categories']))
+    if(isset($_GET['edit_category']))
     {
-        include('edit_categories.php');
+        include('edit_category.php');
+    }
+    if(isset($_GET['delete_category']))
+    {
+        include('delete_category.php');
     }
     
     ?>
