@@ -7,7 +7,8 @@ if(isset($_GET['remove_plants']))
     if($result)
     {
         echo "<script>alert('Successfully Deleted')</script>";
-        echo "<script>window.open('index.php', '_self')</script>";
+        echo"<script>window.open('index.php?view_plants','_self')</script>";
+       
     }
 
 }

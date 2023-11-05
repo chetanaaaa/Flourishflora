@@ -1,7 +1,9 @@
 <?php
 include('../includes/connect.php');
 include('../functions/common_function.php');
+session_start();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,9 +53,8 @@ include('../functions/common_function.php');
     <button><a href="index.php?insert_category" class="nav-link text-light bg-success">Insert Categories</a></button>
     <button><a href="index.php?view_categories" class="nav-link text-light bg-success">View categories</a></button>
     <button><a href="" class="nav-link text-light bg-success">Nurseries</a></button>
-    <button><a href="" class="nav-link text-light bg-success">Users</a></button>
-    <button><a href="" class="nav-link text-light bg-success">Orders</a></button>
-    <button><a href="" class="nav-link text-light bg-success">Payment</a></button>
+    <button><a href="index.php?list_users" class="nav-link text-light bg-success">Users</a></button>
+    <button><a href="index.php?list_orders" class="nav-link text-light bg-success">Orders</a></button>
     <button><a href="" class="nav-link text-light bg-success">Logout</a></button>
 </div>
 </div>
@@ -94,9 +95,52 @@ include('../functions/common_function.php');
     {
         include('delete_category.php');
     }
+    if(isset($_GET['list_orders']))
+    {
+        include('list_orders.php');
+    }
+    if(isset($_GET['remove_orders']))
+    {
+        include('remove_orders.php');
+    }
+    if(isset($_GET['list_users']))
+    {
+        include('list_users.php');
+    }
+    if(isset($_GET['remove_users']))
+    {
+        include('remove_users.php');
+    }
     
     ?>
 </div>
 </div>
 </body>
 </html>
+<?php 
+$email=$_SESSION['email'];
+$selectq="select * from admin where email='$email'";
+$user_res=mysqli_query($con,$selectq);
+$user_row=mysqli_fetch_array($user_res);
+$name=$user_row['name'];
+
+        if(!isset($_SESSION['email'])){
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='#'>Welcome Guest</a>
+          </li>";
+        }
+        else{
+          echo "<li class='nav-item'>
+          <a class='nav-link' href='#'>Welcome $name</a>
+          </li>";}
+    if(!isset($_SESSION['email'])){
+      echo "<li class='nav-item'>
+      <a class='nav-link' href='login.php'>Login</a>
+      </li>";
+    }
+    else{
+      echo "<li class='nav-item'>
+      <a class='nav-link' href='logout.php'>Logout</a>
+      </li>";
+    }
+    ?>

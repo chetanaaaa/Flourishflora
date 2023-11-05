@@ -23,7 +23,7 @@ while($row=mysqli_fetch_array($result_rows)){
     $quantity=$row['quantity'];
     $select_plant="select * from plants where plant_id=$plant_id";
     $run=mysqli_query($con,$select_plant);
-    $plant_data=mysqli_fetch_array($run);
+    $plant_data=mysqli_fetch_assoc($run);
     $price=$plant_data['price'];
     $total_price+=$price*$quantity;
     $count+=$quantity;
@@ -39,8 +39,8 @@ if($resq){
     echo "<script>window.open('profile.php','_self')</script>";
 }
 //deleting items from cart
-$empty_cart="delete from cart_details";
-$res=mysqli_query($con,$empty_cart);
+ $empty_cart="delete from cart_details";
+ $res=mysqli_query($con,$empty_cart);
 
 }
 
