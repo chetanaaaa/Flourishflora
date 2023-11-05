@@ -59,7 +59,8 @@ if (isset($_POST['edit_plant'])) {
     $result_query = mysqli_query($con, $update_plant);
     if ($result_query) {
         echo "<script>alert('Successfully Updated')</script>";
-        echo "<script>window.open('index.php', '_self')</script>";
+    echo"<script>window.open('index.php?view_plants','_self')</script>";
+        
     }
     else
     {
