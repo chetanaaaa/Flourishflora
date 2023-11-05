@@ -8,10 +8,17 @@ global $con;
 $total_price=0;
 $invoice_num=mt_rand();
 $status='pending';
-$cartq="select * from cart_details";
+$ip_addr=$_SERVER['REMOTE_ADDR'];
+
+$insert_orders="insert into orders (cust_id,invoice_number,date,status) values ($cust_id,$invoice_num,NOW(),'$status')";
+$resultq=mysqli_query($con,$insert_orders);
+$order_id=mysqli_insert_id($con);
+
+$cartq="select * from cart_details where ip_address='$ip_addr'";
 $result_rows=mysqli_query($con,$cartq);
-$count=mysqli_num_rows($result_rows);
-while($row=mysqli_fetch_assoc($result_rows)){
+$count=0;
+
+while($row=mysqli_fetch_array($result_rows)){
     $plant_id=$row['plant_id'];
     $quantity=$row['quantity'];
     $select_plant="select * from plants where plant_id=$plant_id";
@@ -20,11 +27,14 @@ while($row=mysqli_fetch_assoc($result_rows)){
     $price=$plant_data['price'];
     $total_price+=$price*$quantity;
     $count+=$quantity;
+
+    $insert_query="insert into order_plants (order_id,plant_id,quantity) values ($order_id,$plant_id,$quantity)";
+    $run=mysqli_query($con,$insert_query);
 }
 
-$insert_orders="insert into orders (cust_id,plant_id,amount_due,invoice_number,total_products,date,status) values($cust_id,$plant_id,$total_price,$invoice_num,$count,NOW(),'$status')";
-$resultq=mysqli_query($con,$insert_orders);
-if($resultq){    
+$update_query="update orders set amount_due=$total_price where order_id=$order_id";
+$resq=mysqli_query($con,$update_query);
+if($resq){    
     echo "<script>alert('Orders submitted successfully')</script>";
     echo "<script>window.open('profile.php','_self')</script>";
 }

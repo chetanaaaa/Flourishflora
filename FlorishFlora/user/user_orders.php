@@ -22,7 +22,6 @@ $cust_id=$row_fetch['cust_id'];
         <tr>
             <th>S.no</th>
             <th>Amount Due</th>
-            <th>Total products</th>
             <th>Invoice number</th>
             <th>Date</th>
             <th>Complete/Incomplete</th>
@@ -38,9 +37,7 @@ $cust_id=$row_fetch['cust_id'];
             $order_id=$row_orders['order_id'];
             $amount_due=$row_orders['amount_due'];
             $cust_id=$row_orders['cust_id'];
-            $plant_id=$row_orders['plant_id'];
             $invoice_number=$row_orders['invoice_number'];
-            $total_products=$row_orders['total_products'];
             $date=$row_orders['date'];
             $status=$row_orders['status'];
             if($status=='pending'){
@@ -51,7 +48,6 @@ $cust_id=$row_fetch['cust_id'];
               echo "<tr>
             <td>$num</td>
             <td>$amount_due</td>
-            <td>$total_products</td>
             <td>$invoice_number</td>
             <td>$date</td>
             <td>$status</td>";
