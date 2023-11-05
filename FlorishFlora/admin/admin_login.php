@@ -43,9 +43,9 @@ include('../functions/common_function.php');
                 <div class="outline mb-4">
                 <label for="password" class="form-label">Password</label><br>
                 <input type="password" id="password" name="password" placeholder="Enter Your Password" required="required" class="form-control">
-                </div>
+    </div>
 <div>
-    <input type="submit" class="btn bg-success py-2 px-3 border-0" name="login" Value="Register">
+    <input type="submit" class="btn bg-success py-2 px-3 border-0" name="login" Value="Login">
     <p class="small fw-bold mt-2 pt-1 text-dark">Dont have an account?<a href="admin_register.php" class="link-danger">Register Now!</a></p>
             </form>
     </form>
@@ -57,9 +57,9 @@ include('../functions/common_function.php');
 <?php
 if(isset($_POST['login']))
 {
-    $email=$_POST['email'];
+    $name=$_POST['name'];
     $password=$_POST['password'];
-    $select_query="select * from admin where email='$email'";
+    $select_query="select * from admin where name='$name'";
     $result=mysqli_query($con,$select_query);
     $row_count=mysqli_num_rows($result);
     
@@ -68,15 +68,15 @@ if(isset($_POST['login']))
     $name=$row_data['name'];
     }
     if($row_count>0){
-        $_SESSION['email']=$email;
+        $_SESSION['name']=$name;
         if(password_verify($password,$row_data['password'])){
             if($row_count==1 and $row_count_cart==0){
-                $_SESSION['email']=$email;
+                $_SESSION['name']=$name;
                 echo "<script>alert('Logged in successfully!🤩')</script>";
                 echo "<script>window.open('index.php','_self')</script>";
             }
             else{
-                $_SESSION['email']=$email;
+                $_SESSION['name']=$name;
                 echo "<script>alert('Logged in successfully!🥳')</script>";
                 echo "<script>alert('You have items in your cart🤗')</script>";
                 echo "<script>window.open('index.php','_self')</script>";

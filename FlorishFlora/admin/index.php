@@ -2,6 +2,14 @@
 include('../includes/connect.php');
 include('../functions/common_function.php');
 session_start();
+if(isset($_SESSION['name']))
+{
+$name=$_SESSION['name'];
+$selectq="select * from admin where name='$name'";
+$user_res=mysqli_query($con,$selectq);
+$user_row=mysqli_fetch_array($user_res);
+$name=$user_row['name'];
+}
 ?>
 
 
@@ -31,9 +39,29 @@ session_start();
                 <img src="../images/plant_logo.png" alt="" class="logo">
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">Welcome Guest</a>
-</li>
+                    <?php
+                   if(!isset($_SESSION['name'])){
+                    echo "<li class='nav-item'>
+                    <a class='nav-link' href='#'>Welcome Guest</a>
+                    </li>";
+                  }
+                  else{
+                    echo "<li class='nav-item'>
+                    <a class='nav-link' href='#'>Welcome $name</a>
+                    </li>";} 
+
+                    if(!isset($_SESSION['name'])){
+                        echo "<li class='nav-item'>
+                        <a class='nav-link' href='admin_login.php'>Login</a>
+                        </li>";
+                      }
+                      else{
+                        echo "<li class='nav-item'>
+                        <a class='nav-link' href='logout.php'>Logout</a>
+                        </li>";
+                      }
+
+                    ?>
 </ul>
 </nav>
 
@@ -55,7 +83,7 @@ session_start();
     <button><a href="" class="nav-link text-light bg-success">Nurseries</a></button>
     <button><a href="index.php?list_users" class="nav-link text-light bg-success">Users</a></button>
     <button><a href="index.php?list_orders" class="nav-link text-light bg-success">Orders</a></button>
-    <button><a href="" class="nav-link text-light bg-success">Logout</a></button>
+
 </div>
 </div>
 
@@ -117,30 +145,3 @@ session_start();
 </div>
 </body>
 </html>
-<?php 
-$email=$_SESSION['email'];
-$selectq="select * from admin where email='$email'";
-$user_res=mysqli_query($con,$selectq);
-$user_row=mysqli_fetch_array($user_res);
-$name=$user_row['name'];
-
-        if(!isset($_SESSION['email'])){
-          echo "<li class='nav-item'>
-          <a class='nav-link' href='#'>Welcome Guest</a>
-          </li>";
-        }
-        else{
-          echo "<li class='nav-item'>
-          <a class='nav-link' href='#'>Welcome $name</a>
-          </li>";}
-    if(!isset($_SESSION['email'])){
-      echo "<li class='nav-item'>
-      <a class='nav-link' href='login.php'>Login</a>
-      </li>";
-    }
-    else{
-      echo "<li class='nav-item'>
-      <a class='nav-link' href='logout.php'>Logout</a>
-      </li>";
-    }
-    ?>
