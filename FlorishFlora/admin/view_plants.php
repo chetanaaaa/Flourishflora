@@ -39,9 +39,13 @@ while($row=mysqli_fetch_assoc($results)){
     <td><?php echo $price;?></td>
     <td><?php echo $stocks;?></td>
     <td><?php 
-    $get_count="select * from orders where plant_id=$plant_id ";
+    $get_count="select * from order_plants where plant_id=$plant_id ";
     $result_count=mysqli_query($con,$get_count);
-    $rows_count=mysqli_num_rows($result_count);
+    $rows_count=0;
+    while($fetch_row=mysqli_fetch_array($result_count)){
+        $qty=$fetch_row['quantity'];
+        $rows_count+=$qty;
+    }
     echo $rows_count;
     ?>
     </td>
