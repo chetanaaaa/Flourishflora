@@ -8,7 +8,7 @@ include('../functions/common_function.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin login</title>
+    <title>Nursery login</title>
 
  <!--bootsrap css-->
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -30,7 +30,7 @@ include('../functions/common_function.php');
 </head>
 <body>
     <div class="container-fluid m-3">
-  <h3 class="text-center mb-5 text-dark">Admin Login</h2>
+  <h3 class="text-center mb-5 text-dark">Nursery Login</h2>
   <h4 class="text-center text-darks">FLOURISH FLORA</h3>
     <p class="text-center text-dark">Your Nursery's green companian</p>
 <div class="row d-flex justify-content-center">
@@ -39,7 +39,7 @@ include('../functions/common_function.php');
 <div class="col-lg-6">
         <form action="" method="post">
             <div class="outline mb-4">
-                <label for="name" class="form-label">User Name</label><br>
+                <label for="name" class="form-label">Nursery Name</label><br>
                 <input type="text" id="name" name="name" placeholder="Enter Your Name" required="required" class="form-control">
                 <div class="outline mb-4">
                 <label for="password" class="form-label">Password</label><br>
@@ -47,7 +47,7 @@ include('../functions/common_function.php');
     </div>
 <div>
     <input type="submit" class="btn bg-success py-2 px-3 border-0" name="login" Value="Login">
-    <p class="small fw-bold mt-2 pt-1 text-dark">Dont have an account?<a href="admin_register.php" class="link-danger">Register Now!</a></p>
+    <p class="small fw-bold mt-2 pt-1 text-dark">Dont have an account?<a href="nursery_register.php" class="link-danger">Register Now!</a></p>
             </form>
     </form>
 
@@ -60,12 +60,12 @@ if(isset($_POST['login']))
 {
     $name=$_POST['name'];
     $password=$_POST['password'];
-    $select_query="select * from admin where name='$name'";
+    $select_query="select * from nursery where name='$name'";
     $result=mysqli_query($con,$select_query);
     $row_count=mysqli_num_rows($result);
     
     if($row_data=mysqli_fetch_assoc($result)){
-    $admin_id=$row_data['admin_id'];
+    $nursery_id=$row_data['nursery_id'];
     $name=$row_data['name'];
     }
     if($row_count>0){
