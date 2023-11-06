@@ -9,7 +9,6 @@
         <th>Order Id</th>
         <th>Amount</th>
         <th>Invoice Number</th>
-        <th>Total Products</th>
         <th>Order Date</th>
         <th>Status</th>
         <th>Delete</th>
@@ -29,7 +28,6 @@ else
         $cust_id=$row_data['cust_id'];
         $amt=$row_data['amount_due'];
         $invoice=$row_data['invoice_number'];
-        $total_products=$row_data['total_products'];
         $status=$row_data['status'];
         $date=$row_data['date'];
     
@@ -39,7 +37,6 @@ echo"<tbody class='bg-success text-light'>
     <td>$order_id</td>
     <td>$amt</td>
     <td>$invoice</td>
-    <td>$total_products</td>
     <td>$date</td>
     <td>$status</td>
     ";?>
