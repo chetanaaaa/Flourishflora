@@ -44,9 +44,6 @@ session_start();
           <a class="nav-link" href="../display_all.php">Plants</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Reminders</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
@@ -115,6 +112,9 @@ $fname=$user_row['fname'];
                     <img src="../images/profile.webp" class="profile_photo my-4" alt="">
                 </li>
                 <li class="nav-item bg-muted">
+                <a class="nav-link text-light" href="profile.php?reminders">Reminders</a>
+                </li>
+                <li class="nav-item bg-muted">
                 <a class="nav-link text-light" href="profile.php?my_orders">My Orders</a>
                 </li>
                 <li class="nav-item bg-muted">
@@ -139,6 +139,9 @@ $fname=$user_row['fname'];
             }
             if(isset($_GET['delete_account'])){
               include('delete_acc.php');
+            }
+            if(isset($_GET['reminders'])){
+              include('reminders.php');
             }
             
             ?>

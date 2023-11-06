@@ -42,9 +42,6 @@ if(isset($_SESSION['email'])){
           <a class="nav-link" href="display_all.php">Plants</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Reminders</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">

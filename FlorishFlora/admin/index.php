@@ -77,7 +77,7 @@ $name=$user_row['name'];
     <div class="col-md-12 bg-dark p-1 align-items-center">
 <div class="button text-center">
     <button class="my-3"><a href="index.php?view_plants" class="nav-link text-light bg-success ">View products</a></button>
-    <button><a href="" class="nav-link text-light bg-success">Insert Remainders</a></button>
+    <button><a href="index.php?insert_reminders" class="nav-link text-light bg-success">Insert Reminders</a></button>
     <button><a href="index.php?insert_category" class="nav-link text-light bg-success">Insert Categories</a></button>
     <button><a href="index.php?view_categories" class="nav-link text-light bg-success">View categories</a></button>
     <button><a href="" class="nav-link text-light bg-success">Nurseries</a></button>
@@ -95,6 +95,9 @@ $name=$user_row['name'];
 <!--fourth child-->
 <div class="container my-5">
     <?php 
+    if(isset($_GET['insert_reminders'])){
+        include('reminders.php');
+    }
     if(isset($_GET['insert_category']))
     {
         include('insert_categories.php');

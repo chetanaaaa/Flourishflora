@@ -42,7 +42,7 @@ if(isset($_POST['insert_plant'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert Products</title>
+    <title>Insert Plants</title>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
  <!--font awesome-->
@@ -50,7 +50,7 @@ if(isset($_POST['insert_plant'])){
 <link rel="stylesheet" href="../style.css">
 <body  style="background-color:rgb(163, 233, 163)!important">
     <div class="container mt-3">
-        <h1 class="text-ceneter">Insert Products</h1>
+        <h1 class="text-ceneter">Insert Plants</h1>
     <form action="" method="post" enctype="multipart/form-data">
         <div class="form-outline mb-4 w-50 m-auto">
             <label for="plant_name" class="form-label ">Plant Name</label>
