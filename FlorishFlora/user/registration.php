@@ -5,6 +5,15 @@ include('../includes/connect.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+       body{ margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+            background-image:url('../images/admin_login.jpg') ;
+            opacity:80%;}
+            </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
@@ -13,7 +22,8 @@ include('../includes/connect.php');
     <!--font awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body style="background-color:rgb(163, 233, 163)!important">
+
+<body>
 <div class="container-fluid my-3">
     <h2 class="text-center">New User Registration</h2>
     <div class="row d-flex align-items-centre justify-content-center">
@@ -30,17 +40,17 @@ include('../includes/connect.php');
         name="lname"/>
     </div>
     <div class="form-outline mb-4">
-        <label for="email" class="form-label">email</label>
+        <label for="email" class="form-label">Email</label>
         <input type="email" id="email" class="form-control" placeholder="Enter your email" autocomplete="off" required="required" 
         name="email"/>
     </div>
     <div class="form-outline mb-4">
-        <label for="password" class="form-label">password</label>
+        <label for="password" class="form-label">Password</label>
         <input type="password" id="password" class="form-control" placeholder="Enter your password" autocomplete="off" required="required" 
         name="password"/>
     </div>
     <div class="form-outline mb-4">
-        <label for="address" class="form-label">address</label>
+        <label for="address" class="form-label">Address</label>
         <input type="text" id="address" class="form-control" placeholder="Enter your address" autocomplete="off" required="required" 
         name="address"/>
     </div>

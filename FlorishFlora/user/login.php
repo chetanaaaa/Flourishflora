@@ -15,30 +15,39 @@ include('../functions/common_function.php');
 </head>
 
 <style>
-   body{
-        overflow-x:hidden;
-    }
+   body
+   
+        {   margin: 0;
+  padding: 0;
+  overflow:hidden;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+            background-image:url('../images/admin_login.jpg') ;
+            opacity:75%;
+        } 
+    
 </style>
 
-<body style="background-color:rgb(163, 233, 163)!important">
+<body>
 <div class="container-fluid my-3">
-    <h2 class="text-center">User Login</h2>
+    <h2 class="text-center"><b>User Login</b></h2>
     <div class="row d-flex align-items-centre justify-content-center">
         <div class="col-lg-12 col-xl-6">
 <form action="" method="post">
     <div class="form-outline mb-4">
-        <label for="email" class="form-label">email</label>
+        <label for="email" class="form-label"><b>Email</b></label>
         <input type="email" id="email" class="form-control" placeholder="Enter your email" autocomplete="off" required="required" 
         name="email"/>
     </div>
     <div class="form-outline mb-4">
-        <label for="password" class="form-label">password</label>
+        <label for="password" class="form-label"><b>Password</b></label>
         <input type="password" id="password" class="form-control" placeholder="Enter your password" autocomplete="off" required="required" 
         name="password"/>
     </div>
     <div class="mt-4 pt-2">
         <input type="submit" value="Login" class="bg-success py-2 px-3 border=0" name="login"/>
-        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="registration.php">Register</a></p>
+        <p class="small fw-bold mt-2 pt-1 mb-0"><b><i>Don't have an account?</i></b><a href="registration.php">Register</a></p>
     </div>
 </form>
         </div>
