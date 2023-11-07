@@ -32,3 +32,17 @@ if(isset($_POST['add_rem'])){
     </form>
 </body>
 </html>
+
+
+<!-- CREATE TRIGGER `insert_reminders` AFTER INSERT ON `orders`
+ FOR EACH ROW BEGIN
+    INSERT INTO reminders (plant_id, customer_id, reminder_date, reminder_message)
+    SELECT
+        op.plant_id,
+        NEW.cust_id,
+        DATE_ADD(NEW.date, INTERVAL pr.day_interval DAY),
+        CONCAT(pr.water, ' ', pr.fertiliser, ' ', pr.pruning, ' ', pr.custom)
+    FROM order_plants op
+    JOIN predefined_reminders pr ON op.plant_id = pr.plant_id
+    WHERE op.order_id = NEW.order_id;
+END -->
