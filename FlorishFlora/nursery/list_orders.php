@@ -4,17 +4,19 @@
 
         <?php 
         $nursery=$_SESSION['name'];
-        $get_orders="select * from orders joins plants using(plant_id) where n_name='$nursery'";
+        $get_orders="CALL ListOrdersByNursery('$nursery')";
         $result=mysqli_query($con,$get_orders);
         $row_count=mysqli_num_rows($result);
         echo"<tr>
-        <th>Order Id</th>
-        <th>Amount</th>
-        <th>Invoice Number</th>
-        <th>Total Products</th>
-        <th>Order Date</th>
-        <th>Status</th>
-        <th>Delete</th>
+    
+    <td>customer Fname</td>
+    <td>customer lname</td>
+    <td>amounnt</td>
+    <td>InvoiceDnumber</td>
+    <td>date</td>
+    <td>Status</td>
+    <th>Delete</th>
+        }
 </tr>
 </thread>
 <tbody class='bg-success text-light'>";
@@ -26,22 +28,23 @@ if($row_count==0)
 else
 {
     while($row_data=mysqli_fetch_assoc($result))
-    {
-        $order_id=$row_data['order_id'];
-        $cust_id=$row_data['cust_id'];
-        $amt=$row_data['amount_due'];
+    
+    { 
+        $cust_name=$row_data['customer_firstname'];
+        $cust_lname=$row_data['customer_lastname'];
+        $amt=$row_data['total_amount'];
         $invoice=$row_data['invoice_number'];
-        $total_products=$row_data['total_products'];
         $status=$row_data['status'];
         $date=$row_data['date'];
+        
     
 echo"<tbody class='bg-success text-light'>
 <tr>
-
-    <td>$order_id</td>
+ 
+    <td>$cust_name</td>
+    <td>$cust_lname</td>
     <td>$amt</td>
     <td>$invoice</td>
-    <td>$total_products</td>
     <td>$date</td>
     <td>$status</td>
     ";?>
