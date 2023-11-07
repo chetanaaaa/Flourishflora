@@ -79,10 +79,11 @@ $name=$user_row['name'];
     <button><a href="index.php?view_plants" class="nav-link text-light bg-success">View Products</a></button>
     <button><a href="index.php?list_orders" class="nav-link text-light bg-success">Orders</a></button> 
     <button><a href="" class="nav-link text-light bg-success">Payment</a></button>
-    <button><a href="" class="nav-link text-light bg-success">Logout</a></button>
+    <button><a href="index.php?sales" class="nav-link text-light bg-success">Toatal Sales</a></button>
 </div>
 </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <?php
@@ -102,7 +103,12 @@ if(isset($_GET['view_plants']))
     {
         include('list_orders.php');
     }
+    if(isset($_GET['sales']))
+    {
+        include('sales.php');
+    }
     ?>
+    
 </div>
 </div>
 </body>
