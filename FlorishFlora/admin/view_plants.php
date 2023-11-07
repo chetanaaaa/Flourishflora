@@ -20,7 +20,7 @@
 <?php
 $get_plants="select * from plants";
 $results=mysqli_query($con,$get_plants);
-while($row=mysqli_fetch_assoc($results)){
+while($row=mysqli_fetch_array($results)){
     $plant_id=$row['plant_id'];
     $plant_name=$row['plant_name'];
     $plant_image=$row['image'];
@@ -53,7 +53,6 @@ while($row=mysqli_fetch_assoc($results)){
     echo $status ?></td>
     <td><a href='index.php?edit_plants=<?php echo $plant_id ?>' class='text-dark'><i class='fa-solid fa-pen-to-square'></i></a></td>
     <td><a href='index.php?remove_plants=<?php echo $plant_id ?>' class='text-dark'><i class='fa-solid fa-trash'></i></a></td></tr>
-    
 
 <?php
 

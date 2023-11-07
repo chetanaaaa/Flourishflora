@@ -40,12 +40,12 @@ $name=$user_row['name'];
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
                     <?php
-                   if(!isset($_SESSION['name'])){
+                    if(!isset($_SESSION['name'])){
                     echo "<li class='nav-item'>
                     <a class='nav-link' href='#'>Welcome Guest</a>
                     </li>";
-                  }
-                  else{
+                    }
+                    else{
                     echo "<li class='nav-item'>
                     <a class='nav-link' href='#'>Welcome $name</a>
                     </li>";} 
@@ -54,14 +54,14 @@ $name=$user_row['name'];
                         echo "<li class='nav-item'>
                         <a class='nav-link' href='admin_login.php'>Login</a>
                         </li>";
-                      }
-                      else{
+                        }
+                        else{
                         echo "<li class='nav-item'>
                         <a class='nav-link' href='logout.php'>Logout</a>
                         </li>";
-                      }
+                        }
 
-                    ?>
+?>
 </ul>
 </nav>
 
@@ -88,6 +88,7 @@ $name=$user_row['name'];
 </div>
 
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 

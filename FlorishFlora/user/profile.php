@@ -21,6 +21,18 @@ session_start();
     margin:auto;
     display: block;
 }
+.notification {
+            background-color: red;
+            color: white;
+            border-radius: 50% ;
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            text-align: center;
+            font-size: 12px;
+            line-height: 20px;
+            margin-left: 5px;
+        }
 
  </style>
 </head>
@@ -70,6 +82,13 @@ $selectq="select * from user_table where email='$email'";
 $user_res=mysqli_query($con,$selectq);
 $user_row=mysqli_fetch_array($user_res);
 $fname=$user_row['fname'];
+$cust_id=$user_row['cust_id'];
+
+$current_date = date('Y-m-d');
+$query = "SELECT * FROM reminders WHERE customer_id = $cust_id AND DATE(reminder_date) = '$current_date'";
+$result = mysqli_query($con,$query);
+$notification_count=mysqli_num_rows($result);
+
 ?>
 <!-- second child-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -112,7 +131,10 @@ $fname=$user_row['fname'];
                     <img src="../images/profile.webp" class="profile_photo my-4" alt="">
                 </li>
                 <li class="nav-item bg-muted">
-                <a class="nav-link text-light" href="profile.php?reminders">Reminders</a>
+                <a class="nav-link text-light" href="profile.php?reminders">Reminders
+                  <?php if ($notification_count > 0) {
+                  echo "<span class='notification'>$notification_count</span>";
+                  } ?> </a>
                 </li>
                 <li class="nav-item bg-muted">
                 <a class="nav-link text-light" href="profile.php?my_orders">My Orders</a>
