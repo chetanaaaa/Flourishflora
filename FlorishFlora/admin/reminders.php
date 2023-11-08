@@ -21,7 +21,7 @@ if(isset($_POST['add_rem'])){
     <title>Add Predefined Reminder</title>
 </head>
 <body>
-    <h1>Add Predefined Reminder</h1>
+    <h1 class="text-white">Add Predefined Reminder</h1>
     <form action="" method="POST" accept-charset="UTF-8">
         <div class="input-group  w-10 mb-2">
   <div class="input-group  w-10 mb-2">

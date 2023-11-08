@@ -79,22 +79,22 @@ if (isset($_POST['edit_plant'])) {
 </style>
 
 <div class="container m-5">
-    <h1 class="text-center">Edit Plant details</h1>
+    <h1 class="text-center text-white">Edit Plant details</h1>
     <form action="" method="post" enctype="multipart/form-data">
         <div class="form-outline mb-4 w-50 m-auto">
-            <label for="plant_name" class="form-label">Plant Name</label>
+            <label for="plant_name" class="form-label text-white">Plant Name</label>
             <input type="text" name="plant_name" id="plant_name" value="<?php echo $plant_name ?>" class="form-control bg-light text-dark" placeholder="Enter Name of the Plant" autocomplete="off" required="required">
         </div>
         <div class="form-outline mb-4 w-50 m-auto">
-            <label for="plant_desc" class="form-label">Plant Description</label>
+            <label for="plant_desc" class="form-label text-white">Plant Description</label>
             <input type="text" name="plant_desc" id="plant_desc" value="<?php echo $desc ?>" class="form-control bg-light text-dark" placeholder="Enter Plant Description" autocomplete="off" required="required">
         </div>
         <div class="form-outline mb-4 w-50 m-auto">
-            <label for="nursery_name" class="form-label">Nursery Name</label>
+            <label for="nursery_name" class="form-label text-white">Nursery Name</label>
             <input type="text" name="nursery_name" id="nursery_name" value="<?php echo $nursery; ?>" class="form-control bg-light text-dark" placeholder="Enter Nursery name" autocomplete="off" required="required">
         </div>
         <div class="form-outline mb-4 w-50 m-auto">
-            <label for="categories" class="form-label">Categories</label>
+            <label for="categories" class="form-label text-white">Categories</label>
             <select name="categories" class="form-select">
                 <option value="<?php echo $category_id?>"><?php echo $category_title ?></option>
                 <?php 
@@ -109,18 +109,18 @@ if (isset($_POST['edit_plant'])) {
             </select>
         </div>
         <div class="form-outline mb-4 w-50 m-auto">
-            <label for="plant_img1" class="form-label">Plant Image</label>
+            <label for="plant_img1" class="form-label text-white">Plant Image</label>
             <div class="d-flex">
                 <input type="file" name="plant_img" id="plant_img" class="form-control bg-light text-dark w-90 m-auto" autocomplete="off">
                 <img src="../nursery/img/<?php echo $plant_image ?>" alt="" class="products_img">
             </div>
         </div>
         <div class="form-outline mb-4 w-50 m-auto">
-            <label for="stock" class="form-label">Stocks</label>
+            <label for="stock" class="form-label text-white">Stocks</label>
             <input type="text" name="stock" id="stock" value="<?php echo $stocks ?>" class="form-control bg-light text-dark" placeholder="Enter the Number of stocks" autocomplete="off" required="required">
         </div>
         <div class="form-outline mb-4 w-50 m-auto">
-            <label for="plant_price" class="form-label">Plant Price</label>
+            <label for="plant_price" class="form-label text-white">Plant Price</label>
             <input type="text" name="plant_price" id="plant_price" value="<?php echo $price ?>" class="form-control bg-light text-dark" placeholder="Enter the Amount per plant" autocomplete="off" required="required">
         </div>
         <div class="form-outline mb-4 w-50 m-auto">
