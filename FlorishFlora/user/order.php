@@ -7,7 +7,7 @@ if([isset($_GET['cust_id'])]){
 global $con;
 $total_price=0;
 $invoice_num=mt_rand();
-$status='pending';
+$status='complete';
 $ip_addr=$_SERVER['REMOTE_ADDR'];
 
 $insert_orders="insert into orders (cust_id,invoice_number,date,status) values ($cust_id,$invoice_num,NOW(),'$status')";
@@ -35,7 +35,7 @@ while($row=mysqli_fetch_array($result_rows)){
 $update_query="update orders set amount_due=$total_price where order_id=$order_id";
 $resq=mysqli_query($con,$update_query);
 if($resq){    
-    echo "<script>alert('Orders submitted successfully')</script>";
+    echo "<script>alert('Order placed successfully')</script>";
     echo "<script>window.open('profile.php','_self')</script>";
 }
 //deleting items from cart

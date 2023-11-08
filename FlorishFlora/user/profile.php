@@ -66,11 +66,6 @@ session_start();
         </li>
         
       </ul>
-      <form class="d-flex" role="search" method="get">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        <!-- <button class="btn btn-outline-dark" type="submit">Search</button> -->
-        <input type="submit" value="search" class="btn btn-outline-light" name="search_data_plant">
-      </form>
     </div>
   </div>
 </nav>
@@ -152,7 +147,6 @@ $notification_count=mysqli_num_rows($result);
         </div>
         <div class="col-md-10 text-center">
             <?php
-            get_user_order_details();
             if(isset($_GET['edit_account'])){
                 include('edit_acc.php');
             }

@@ -55,7 +55,18 @@ while($row=mysqli_fetch_array($results)){
     <td><a href='index.php?remove_plants=<?php echo $plant_id ?>' class='text-dark'><i class='fa-solid fa-trash'></i></a></td></tr>
 
 <?php
-
+}
+$query = "SELECT plant_name FROM plants WHERE stocks<=5";
+$run = mysqli_query($con, $query);
+if ($run) {
+    $arr = [];
+    while ($row = mysqli_fetch_assoc($run)) {
+        $arr[] = $row['plant_name'];
+    }
+    if (!empty($arr)) {
+        $message = "Low stock for plant(s): " . implode(', ', $arr);
+        echo "<h4 class='text-danger'>$message</h4>";
+    }
 }
 
 ?>
@@ -63,6 +74,7 @@ while($row=mysqli_fetch_array($results)){
 </tr>
 </tbody>
 </table>
+<<<<<<< HEAD
 <?php 
 $query="SELECT plant_name 
 FROM plants p
@@ -89,3 +101,5 @@ if ($run) {
 
 ?>
 
+=======
+>>>>>>> 4ebaf1ad0d75b62c65f8e504ebf5f8b2f18cf283
