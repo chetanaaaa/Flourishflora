@@ -6,11 +6,7 @@
     <title>Main</title>
     <style>
 body {
-<<<<<<< HEAD
   background-image: url('./images/seedling.jpg');
-=======
-  background-image: url('./images/plant_main.avif');
->>>>>>> 4ebaf1ad0d75b62c65f8e504ebf5f8b2f18cf283
   background-size: cover; /* Cover the entire viewport */
   background-repeat: no-repeat; /* Don't repeat the image */
   background-attachment: fixed; 
