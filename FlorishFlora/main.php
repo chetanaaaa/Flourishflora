@@ -36,9 +36,9 @@ button {
 </head>
 <body>
     <div class="container my-10">
-    <a href="./admin/admin_login.php"><button>Admin</button></a>
-    <a href="index.php"><button>User</button></a>
-    <a href="./nursery/nursery_login.php"><button>Nursery</button></a>
+    <a href="./admin/admin_login.php" target="_blank"><button>Admin</button></a>
+    <a href="index.php" target="_blank"><button>User</button></a>
+    <a href="./nursery/nursery_login.php" target="_blank"><button>Nursery</button></a>
     </div>
     
 </body>

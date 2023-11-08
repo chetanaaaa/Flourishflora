@@ -40,7 +40,7 @@ include('../functions/common_function.php');
         <form action="" method="post">
             <div class="outline mb-4">
                 <label for="name" class="form-label">Nursery Name</label><br>
-                <input type="text" id="name" name="name" placeholder="Enter Your Name" required="required" class="form-control">
+                <input type="text" id="name" name="name" placeholder="Enter Your Name" required="required" class="form-control" autocomplete="off">
                 <div class="outline mb-4">
                 <label for="password" class="form-label">Password</label><br>
                 <input type="password" id="password" name="password" placeholder="Enter Your Password" required="required" class="form-control">
