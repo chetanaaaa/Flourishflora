@@ -47,7 +47,7 @@ include('../functions/common_function.php');
     </div>
 <div>
     <input type="submit" class="btn bg-success py-2 px-3 border-0" name="login" Value="Login">
-    <p class="small fw-bold mt-2 pt-1 text-dark">Dont have an account?<a href="admin_register.php" class="link-danger">Register Now!</a></p>
+
             </form>
     </form>
 
