@@ -56,7 +56,7 @@ while($row=mysqli_fetch_array($results)){
 
 <?php
 }
-$query = "CALL StockAlert()";
+$query = "SELECT plant_name FROM plants WHERE stocks<=5";
 $run = mysqli_query($con, $query);
 if ($run) {
     $arr = [];
