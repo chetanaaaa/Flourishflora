@@ -55,11 +55,21 @@ while($row=mysqli_fetch_array($results)){
     <td><a href='index.php?remove_plants=<?php echo $plant_id ?>' class='text-dark'><i class='fa-solid fa-trash'></i></a></td></tr>
 
 <?php
-
+}
+$query = "CALL StockAlert()";
+$run = mysqli_query($con, $query);
+if ($run) {
+    $arr = [];
+    while ($row = mysqli_fetch_assoc($run)) {
+        $arr[] = $row['plant_name'];
+    }
+    if (!empty($arr)) {
+        $message = "Low stock for plant(s): " . implode(', ', $arr);
+        echo "<h4 class='text-danger'>$message</h4>";
+    }
 }
 ?>
 
 </tr>
 </tbody>
 </table>
-

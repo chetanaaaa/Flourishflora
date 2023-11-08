@@ -35,7 +35,7 @@ while($row=mysqli_fetch_array($result_rows)){
 $update_query="update orders set amount_due=$total_price where order_id=$order_id";
 $resq=mysqli_query($con,$update_query);
 if($resq){    
-    echo "<script>alert('Orders submitted successfully')</script>";
+    echo "<script>alert('Order placed successfully')</script>";
     echo "<script>window.open('profile.php','_self')</script>";
 }
 //deleting items from cart
