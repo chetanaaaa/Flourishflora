@@ -80,12 +80,9 @@ $name=$user_row['name'];
     <button><a href="index.php?insert_reminders" class="nav-link text-light bg-success">Insert Reminders</a></button>
     <button><a href="index.php?insert_category" class="nav-link text-light bg-success">Insert Categories</a></button>
     <button><a href="index.php?view_categories" class="nav-link text-light bg-success">View categories</a></button>
-    <button><a href="" class="nav-link text-light bg-success">Nurseries</a></button>
+    <button><a href="index.php?list_nurseries" class="nav-link text-light bg-success">Nurseries</a></button>
     <button><a href="index.php?list_users" class="nav-link text-light bg-success">Users</a></button>
     <button><a href="index.php?list_orders" class="nav-link text-light bg-success">Orders</a></button>
-
-</div>
-</div>
 
 </div>
 
@@ -142,6 +139,14 @@ $name=$user_row['name'];
     if(isset($_GET['remove_users']))
     {
         include('remove_users.php');
+    }
+    if(isset($_GET['list_nurseries']))
+    {
+        include('list_nurseries.php');
+    }
+    if(isset($_GET['remove_nurseries']))
+    {
+        include('remove_nurseries.php');
     }
     
     ?>

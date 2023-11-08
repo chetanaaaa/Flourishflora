@@ -78,7 +78,6 @@ $name=$user_row['name'];
     <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-success ">Insert products</a></button>
     <button><a href="index.php?view_plants" class="nav-link text-light bg-success">View Products</a></button>
     <button><a href="index.php?list_orders" class="nav-link text-light bg-success">Orders</a></button> 
-    <button><a href="" class="nav-link text-light bg-success">Payment</a></button>
     <button><a href="index.php?sales" class="nav-link text-light bg-success">Toatal Sales</a></button>
 </div>
 </div>

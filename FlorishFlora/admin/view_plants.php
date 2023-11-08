@@ -57,9 +57,35 @@ while($row=mysqli_fetch_array($results)){
 <?php
 
 }
+
 ?>
 
 </tr>
 </tbody>
 </table>
+<?php 
+$query="SELECT plant_name 
+FROM plants p
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM order_plants od
+  WHERE od.plant_id = p.plant_id
+)";
+$run = mysqli_query($con, $query);
+if ($run) {
+    $arr = [];
+    while ($row = mysqli_fetch_assoc($run)) {
+        $arr[] = $row['plant_name'];
+    }?>
+
+<?php
+    if (!empty($arr)) 
+    {
+        $message = "Plants not purchased by any Customer: " . implode(', ', $arr);
+        echo "<h7 class='text-danger'>$message</h7>";
+        
+    }
+}
+
+?>
 

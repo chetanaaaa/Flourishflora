@@ -51,13 +51,10 @@ if(isset($_SESSION['email'])){
           <a class="nav-link" href="display_all.php">Plants</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="cart.php" ><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">total price:<?php total_cart_price();?>/-</a>
+          <a class="nav-link" href="#">Total price:<?php total_cart_price();?>/-</a>
         </li>
         
       </ul>
