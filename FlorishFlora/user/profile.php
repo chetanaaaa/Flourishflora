@@ -66,11 +66,6 @@ session_start();
         </li>
         
       </ul>
-      <form class="d-flex" role="search" method="get">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-        <!-- <button class="btn btn-outline-dark" type="submit">Search</button> -->
-        <input type="submit" value="search" class="btn btn-outline-light" name="search_data_plant">
-      </form>
     </div>
   </div>
 </nav>
