@@ -20,6 +20,7 @@ $cust_id=$user_row['cust_id'];
 $current_date = date('Y-m-d');
 // Retrieve reminders for the user on the current date
     $query = "SELECT * FROM reminders WHERE customer_id = $cust_id and DATE(reminder_date) <= '$current_date'";
+    echo $current_date;
     $result = mysqli_query($con,$query);
     $num=mysqli_num_rows($result);
     if ($num>0) {

@@ -21,14 +21,24 @@ if(isset($_POST['add_rem'])){
 </head>
 <body>
     <h1>Add Predefined Reminder</h1>
-    <form action="" method="POST">
-        <label for="day_interval">Day Interval:</label>
-        <input type="number" name="day_interval" required><br><br>
+    <form action="" method="POST" accept-charset="UTF-8">
+        <div class="input-group  w-10 mb-2">
+  <div class="input-group  w-10 mb-2">
+  <span class="input-group-text bg-success" id="basic-addon1">
+    <i class="fa-solid fa-receipt"></i></span>
+  <input type="number" class="form-control" name="day_interval" placeholder="Enter Day Interval" required>
+  </div>
+  <br><br>
+<div class="input-group  w-10 mb-2">
+  <div class="input-group  w-90 mb-2">
+  <span class="input-group-text bg-success" id="basic-addon1">
+    <i class="fa-solid fa-receipt"></i></span>
+    <textarea name="reminder_message" rows="4" cols="100" required placeholder="Add reminder message"></textarea>
+  </div>
+<div class="input-group  w-10 mb-2">
+  
+<input type="submit" class="bg-success border-0 p-2 my-3" name="add_rem" value="Add Reminders">
 
-        <label for="reminder_message">Reminder Message:</label>
-        <input type="text" name="reminder_message" required><br><br>
-
-        <input type="submit" name="add_rem" value="Add Reminder">
     </form>
 </body>
 </html>
