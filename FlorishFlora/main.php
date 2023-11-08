@@ -6,11 +6,7 @@
     <title>Main</title>
     <style>
 body {
-<<<<<<< HEAD
   background-image: url('./images/seedling.jpg');
-=======
-  background-image: url('./images/plant_main.avif');
->>>>>>> 4ebaf1ad0d75b62c65f8e504ebf5f8b2f18cf283
   background-size: cover; /* Cover the entire viewport */
   background-repeat: no-repeat; /* Don't repeat the image */
   background-attachment: fixed; 
@@ -40,9 +36,9 @@ button {
 </head>
 <body>
     <div class="container my-10">
-    <a href="./admin/admin_login.php"><button>Admin</button></a>
-    <a href="index.php"><button>User</button></a>
-    <a href="./nursery/nursery_login.php"><button>Nursery</button></a>
+    <a href="./admin/admin_login.php" target="_blank"><button>Admin</button></a>
+    <a href="index.php" target="_blank"><button>User</button></a>
+    <a href="./nursery/nursery_login.php" target="_blank"><button>Nursery</button></a>
     </div>
     
 </body>
