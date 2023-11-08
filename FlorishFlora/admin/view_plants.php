@@ -74,7 +74,6 @@ if ($run) {
 </tr>
 </tbody>
 </table>
-<<<<<<< HEAD
 <?php 
 $query="SELECT plant_name 
 FROM plants p
@@ -101,5 +100,3 @@ if ($run) {
 
 ?>
 
-=======
->>>>>>> 4ebaf1ad0d75b62c65f8e504ebf5f8b2f18cf283
