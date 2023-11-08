@@ -80,9 +80,10 @@ $fname=$user_row['fname'];
 $cust_id=$user_row['cust_id'];
 
 $current_date = date('Y-m-d');
-$query = "SELECT * FROM reminders WHERE customer_id = $cust_id AND DATE(reminder_date) = '$current_date'";
+$query = "SELECT COUNT(*) as count FROM reminders WHERE customer_id = $cust_id AND DATE(reminder_date) = '$current_date'";
 $result = mysqli_query($con,$query);
-$notification_count=mysqli_num_rows($result);
+$row=mysqli_fetch_assoc($result);
+$notification_count=$row['count'];
 
 ?>
 <!-- second child-->
