@@ -6,13 +6,14 @@
     <title>Main</title>
     <style>
 body {
-  background-image: url('./images/background.jpg');
+  background-image: url('./images/plant_main.avif');
   background-size: cover; /* Cover the entire viewport */
   background-repeat: no-repeat; /* Don't repeat the image */
   background-attachment: fixed; 
   background-position: center bottom -110px ; 
-  margin-top: 50px; 
+  margin-top: 60px; 
   margin-left:50px;
+  opacity: 75%;
 }
 
 .container {
@@ -35,9 +36,9 @@ button {
 </head>
 <body>
     <div class="container my-10">
-    <a href="./admin/index.php"><button>Admin</button></a>
+    <a href="./admin/admin_login.php"><button>Admin</button></a>
     <a href="index.php"><button>User</button></a>
-    <a href="./nursery/index.php"><button>Nursery</button></a>
+    <a href="./nursery/nursery_login.php"><button>Nursery</button></a>
     </div>
     
 </body>

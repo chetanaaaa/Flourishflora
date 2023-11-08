@@ -7,7 +7,7 @@ if([isset($_GET['cust_id'])]){
 global $con;
 $total_price=0;
 $invoice_num=mt_rand();
-$status='pending';
+$status='complete';
 $ip_addr=$_SERVER['REMOTE_ADDR'];
 
 $insert_orders="insert into orders (cust_id,invoice_number,date,status) values ($cust_id,$invoice_num,NOW(),'$status')";
