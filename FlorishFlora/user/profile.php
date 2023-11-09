@@ -110,6 +110,9 @@ $notification_count=$row['count'];
       </li>";
     }
     ?>
+        <li class="nav-item">
+      <a class="nav-link text-warning" href="recommendation.php">Recommendations</a>
+    </li>
 </ul>
 </nav>
   <div class="bg-light">
