@@ -51,6 +51,9 @@ if(isset($_SESSION['email'])){
           <a class="nav-link" href="display_all.php">Plants</a>
         </li>
         <li class="nav-item">
+        <a class="nav-link" href="https://wa.me/7019522431?">Contact us on WhatsApp</a>
+      </li>
+        <li class="nav-item">
           <a class="nav-link" href="cart.php" ><i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
         </li>
         <li class="nav-item">
