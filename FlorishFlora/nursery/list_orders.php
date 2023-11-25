@@ -15,7 +15,6 @@
     <td>InvoiceDnumber</td>
     <td>date</td>
     <td>Status</td>
-    <th>Delete</th>
         }
 </tr>
 </thread>
@@ -47,10 +46,9 @@ echo"<tbody class='bg-success text-light'>
     <td>$invoice</td>
     <td>$date</td>
     <td>$status</td>
-    ";?>
+    ";
     
-    <td><a href='index.php?remove_orders=<?php echo $order_id ?>' class='text-dark'><i class='fa-solid fa-trash'></i></a></td>
-    <?php
+    
 }
 }
 ?>
